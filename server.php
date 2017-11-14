@@ -4,7 +4,7 @@ set_time_limit(0);// 设置超时时间为无限,防止超时
 date_default_timezone_set('Asia/shanghai');
 
 class WebSocket {
-    const LOG_PATH = '/tmp/';
+    const LOG_PATH = './';
     const LISTEN_SOCKET_NUM = 9;
 
     /**
@@ -40,7 +40,8 @@ class WebSocket {
         }
 
         $this->sockets[0] = ['resource' => $this->master];
-        $pid = posix_getpid();
+//        $pid = posix_getpid();
+        $pid = get_current_user();
         $this->debug(["server: {$this->master} started,pid: {$pid}"]);
 
         while (true) {
